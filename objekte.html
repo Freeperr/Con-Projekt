@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Objekte — CON—PROJEKT</title>
-<meta name="description" content="Eine Übersicht der Objekte, die eine zweite Existenz erhalten haben — Altbauten, Hofstellen, Gewerbebauten.">
+<meta name="description" content="Vier Objekte, die eine zweite Existenz erhalten haben.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -36,76 +36,41 @@
 <main>
 
   <section class="objekte-header wrap">
-    <h1 data-reveal>Sechs Objekte.<br>Sechs Ausgangslagen.</h1>
+    <h1 data-reveal>Vier Objekte.<br>Vier Ausgangslagen.</h1>
   </section>
 
-  <div class="wrap">
-    <div class="filter-bar">
-      <div class="filter-list" role="group" aria-label="Objekte filtern">
-        <button class="is-active" data-filter="alle">Alle</button>
-        <button data-filter="altbau">Altbau</button>
-        <button data-filter="hofstelle">Hofstelle</button>
-        <button data-filter="gewerbe">Gewerbebau</button>
-      </div>
+  <section class="teaser-objekte wrap">
+    <div class="teaser-grid" data-reveal="stagger">
+      <a href="objekt-01.html" class="teaser-card is-large">
+        <div class="teaser-frame"><div class="placeholder-img ph-gadebusch-nachher"></div></div>
+        <div class="teaser-meta">
+          <span class="teaser-num">01</span>
+          <span class="teaser-name">Gadebusch</span>
+        </div>
+      </a>
+      <a href="objekt-02.html" class="teaser-card is-small">
+        <div class="teaser-frame"><div class="placeholder-img ph-stone"></div></div>
+        <div class="teaser-meta">
+          <span class="teaser-num">02</span>
+          <span class="teaser-name">[Platzhalter: Objektname]</span>
+        </div>
+      </a>
+      <a href="objekt-03.html" class="teaser-card is-small">
+        <div class="teaser-frame"><div class="placeholder-img ph-moss"></div></div>
+        <div class="teaser-meta">
+          <span class="teaser-num">03</span>
+          <span class="teaser-name">[Platzhalter: Objektname]</span>
+        </div>
+      </a>
+      <a href="objekt-04.html" class="teaser-card is-large">
+        <div class="teaser-frame"><div class="placeholder-img ph-warm"></div></div>
+        <div class="teaser-meta">
+          <span class="teaser-num">04</span>
+          <span class="teaser-name">[Platzhalter: Objektname]</span>
+        </div>
+      </a>
     </div>
-
-    <ul class="objekt-list">
-      <li>
-        <a class="objekt-row" href="objekt-01.html" data-image="ph-gadebusch-nachher-wide" data-category="altbau" data-reveal>
-          <span class="objekt-num">01</span>
-          <span class="objekt-name">Gadebusch</span>
-          <span class="objekt-cat">Denkmal / Sanierung</span>
-          <span class="objekt-year">2022</span>
-          <span class="objekt-loc">[Platzhalter: Region]</span>
-        </a>
-      </li>
-      <li>
-        <a class="objekt-row" href="objekt-02.html" data-image="ph-stone" data-category="hofstelle" data-reveal>
-          <span class="objekt-num">02</span>
-          <span class="objekt-name">[Platzhalter: Objektname]</span>
-          <span class="objekt-cat">Hofstelle / Sanierung</span>
-          <span class="objekt-year">[Platzhalter: Jahr]</span>
-          <span class="objekt-loc">[Platzhalter: Region]</span>
-        </a>
-      </li>
-      <li>
-        <a class="objekt-row" href="objekt-03.html" data-image="ph-moss" data-category="gewerbe" data-reveal>
-          <span class="objekt-num">03</span>
-          <span class="objekt-name">[Platzhalter: Objektname]</span>
-          <span class="objekt-cat">Gewerbebau / Umnutzung</span>
-          <span class="objekt-year">[Platzhalter: Jahr]</span>
-          <span class="objekt-loc">[Platzhalter: Region]</span>
-        </a>
-      </li>
-      <li>
-        <a class="objekt-row" href="objekt-02.html" data-image="ph-charcoal" data-category="hofstelle" data-reveal>
-          <span class="objekt-num">04</span>
-          <span class="objekt-name">[Platzhalter: Objektname]</span>
-          <span class="objekt-cat">Hofstelle / Sanierung</span>
-          <span class="objekt-year">[Platzhalter: Jahr]</span>
-          <span class="objekt-loc">[Platzhalter: Region]</span>
-        </a>
-      </li>
-      <li>
-        <a class="objekt-row" href="objekt-02.html" data-image="ph-fog" data-category="hofstelle" data-reveal>
-          <span class="objekt-num">05</span>
-          <span class="objekt-name">[Platzhalter: Objektname]</span>
-          <span class="objekt-cat">Hofstelle / Sanierung</span>
-          <span class="objekt-year">[Platzhalter: Jahr]</span>
-          <span class="objekt-loc">[Platzhalter: Region]</span>
-        </a>
-      </li>
-      <li>
-        <a class="objekt-row" href="objekt-03.html" data-image="ph-warm" data-category="gewerbe" data-reveal>
-          <span class="objekt-num">06</span>
-          <span class="objekt-name">[Platzhalter: Objektname]</span>
-          <span class="objekt-cat">Gewerbebau / Umnutzung</span>
-          <span class="objekt-year">[Platzhalter: Jahr]</span>
-          <span class="objekt-loc">[Platzhalter: Region]</span>
-        </a>
-      </li>
-    </ul>
-  </div>
+  </section>
 
 </main>
 
@@ -140,22 +105,5 @@
 </footer>
 
 <script src="js/main.js" defer></script>
-<script>
-  (function () {
-    var buttons = document.querySelectorAll(".filter-list button");
-    var rows = document.querySelectorAll(".objekt-list li");
-    buttons.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        buttons.forEach(function (b) { b.classList.remove("is-active"); });
-        btn.classList.add("is-active");
-        var filter = btn.getAttribute("data-filter");
-        rows.forEach(function (row) {
-          var cat = row.querySelector(".objekt-row").getAttribute("data-category");
-          row.style.display = (filter === "alle" || cat === filter) ? "" : "none";
-        });
-      });
-    });
-  })();
-</script>
 </body>
 </html>
