@@ -273,9 +273,11 @@
       figure.className = "gallery-item";
 
       var img = document.createElement("img");
+      img.addEventListener("load", function () { img.classList.add("is-loaded"); });
       img.src = "/images/luftaufnahmen/" + file;
       img.alt = caption;
       img.loading = "lazy";
+      if (img.complete) img.classList.add("is-loaded");
 
       var figcaption = document.createElement("figcaption");
       figcaption.className = "label-mono";

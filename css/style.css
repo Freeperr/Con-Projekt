@@ -429,7 +429,6 @@ section { position: relative; }
 .teaser-card:hover .teaser-frame.is-loose .placeholder-img { transform: rotate(1.4deg) scale(1.045); }
 .teaser-offset { margin-top: clamp(1.5rem, 3.2vw, 2.6rem); }
 .teaser-meta { display: flex; align-items: baseline; gap: 0.9rem; }
-.teaser-num { font-family: var(--font-mono); color: var(--charcoal); font-size: 0.85rem; }
 .teaser-name { font-family: var(--font-serif); font-size: clamp(1.05rem, 1.36vw, 1.4rem); }
 .teaser-cat { margin-top: 0.3rem; }
 
@@ -658,7 +657,6 @@ section { position: relative; }
    Objekt-Detail
    ========================================================================== */
 .objekt-hero { padding-top: clamp(7rem, 14.4vh, 10rem); padding-bottom: clamp(3rem, 6.4vh, 5rem); }
-.objekt-hero .objekt-num { font-family: var(--font-mono); color: var(--stone); font-size: 1.1rem; display: block; margin-bottom: 1rem; }
 .objekt-hero h1 {
   font-family: var(--font-serif);
   font-weight: 400;
@@ -935,12 +933,20 @@ section { position: relative; }
   box-shadow: 0 0 0 6px var(--paper);
   background: #fff;
 }
-.gallery-item img { display: block; width: 100%; height: auto; filter: saturate(0.9) contrast(1.05) brightness(0.96); }
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: saturate(0.9) contrast(1.05) brightness(0.96);
+  opacity: 0;
+  transition: opacity 0.7s var(--ease);
+}
+.gallery-item img.is-loaded { opacity: 1; }
 .gallery-item figcaption { padding: 0.9rem 1rem; color: var(--stone); }
 .gallery-empty { color: var(--stone); }
 
 /* ==========================================================================
-   Video-Einbettung (Innenraum-Videos)
+   Video-Einbettung (Videos)
    ========================================================================== */
 .video-embed {
   position: relative;
