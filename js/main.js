@@ -16,6 +16,8 @@
     initBackToTop();
     initBaSliders();
     initKontaktForm();
+    initLuftGallery();
+    initVideoGallery();
   }
 
   function injectGrain() {
@@ -246,6 +248,79 @@
         .finally(function () {
           if (submitBtn) submitBtn.disabled = false;
         });
+    });
+  }
+
+  /* ---- Luftaufnahmen-Galerie ----
+     Dateiname -> Bildunterschrift: Endung entfernen, "_" durch Leerzeichen ersetzen.
+     "Luftaufnahme_test.png" wird so zu "Luftaufnahme test". */
+  function initLuftGallery() {
+    var grid = document.getElementById("luftGallery");
+    if (!grid) return;
+    var files = window.LUFTAUFNAHMEN || [];
+
+    if (!files.length) {
+      var empty = document.createElement("p");
+      empty.className = "label-mono gallery-empty";
+      empty.textContent = "Weitere Luftaufnahmen folgen in Kürze.";
+      grid.appendChild(empty);
+      return;
+    }
+
+    files.forEach(function (file) {
+      var caption = file.replace(/\.[^.]+$/, "").replace(/_/g, " ");
+      var figure = document.createElement("figure");
+      figure.className = "gallery-item";
+
+      var img = document.createElement("img");
+      img.src = "/images/luftaufnahmen/" + file;
+      img.alt = caption;
+      img.loading = "lazy";
+
+      var figcaption = document.createElement("figcaption");
+      figcaption.className = "label-mono";
+      figcaption.textContent = caption;
+
+      figure.appendChild(img);
+      figure.appendChild(figcaption);
+      grid.appendChild(figure);
+    });
+  }
+
+  /* ---- Innenraum-Videos-Galerie ---- */
+  function initVideoGallery() {
+    var grid = document.getElementById("videoGallery");
+    if (!grid) return;
+    var ids = window.INNENRAUM_VIDEOS || [];
+
+    if (!ids.length) {
+      var empty = document.createElement("p");
+      empty.className = "label-mono gallery-empty";
+      empty.textContent = "Weitere Videos folgen in Kürze.";
+      grid.appendChild(empty);
+      return;
+    }
+
+    ids.forEach(function (id) {
+      var a = document.createElement("a");
+      a.className = "video-embed";
+      a.href = "https://youtu.be/" + id;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.setAttribute("aria-label", "Video ansehen auf YouTube");
+
+      var img = document.createElement("img");
+      img.src = "https://img.youtube.com/vi/" + id + "/maxresdefault.jpg";
+      img.alt = "Innenraum-Video";
+      img.loading = "lazy";
+
+      var play = document.createElement("span");
+      play.className = "video-play";
+      play.setAttribute("aria-hidden", "true");
+
+      a.appendChild(img);
+      a.appendChild(play);
+      grid.appendChild(a);
     });
   }
 })();

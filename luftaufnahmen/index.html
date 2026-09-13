@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kontakt — con-projekt</title>
-<meta name="description" content="Sie haben ein sanierungsbedürftiges Haus? Schreiben Sie Kai Petersen direkt.">
+<title>Luftaufnahmen — con-projekt</title>
+<meta name="description" content="Luftaufnahmen von Objekten — per Drohne fotografiert.">
 <link rel="icon" type="image/png" href="/images/favicon-32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="/images/favicon-16.png" sizes="16x16">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
@@ -40,35 +40,12 @@
 
 <main>
 
-  <section class="kontakt-hero wrap">
-    <h1 data-reveal>Sie haben ein Haus,<br>das Hilfe braucht?</h1>
+  <section class="legal-hero wrap">
+    <h1 data-reveal>Luftaufnahmen</h1>
   </section>
 
-  <section class="wrap">
-    <div class="kontakt-direct" data-reveal>
-      <a href="mailto:kontakt@con-projekt.de">kontakt@con-projekt.de</a>
-      <a href="tel:+491724313331">0172 4313331</a>
-    </div>
-  </section>
-
-  <section class="kontakt-form wrap">
-    <form class="narrow" data-reveal>
-      <div class="form-row">
-        <label class="label-mono" for="name">Name</label>
-        <input type="text" id="name" name="name" required>
-      </div>
-      <div class="form-row">
-        <label class="label-mono" for="email">E-Mail</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      <div class="form-row">
-        <label class="label-mono" for="objekt">Zum Objekt</label>
-        <textarea id="objekt" name="objekt" rows="5" placeholder="[Platzhalter: Adresse, Zustand, Anliegen]"></textarea>
-      </div>
-      <button type="submit" class="btn">Absenden <span class="btn-arrow icon-lead"></span></button>
-      <p class="form-note form-note-success label-mono">Danke. Wir melden uns in Kürze zurück.</p>
-      <p class="form-note form-note-error label-mono">Da ist etwas schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt eine E-Mail.</p>
-    </form>
+  <section class="gallery-section wrap" data-reveal>
+    <div class="gallery-grid" id="luftGallery"></div>
   </section>
 
 </main>
@@ -102,6 +79,26 @@
   </div>
 </footer>
 
+<!--
+  Neue Luftaufnahme hinzufügen:
+  1. Bilddatei in /images/luftaufnahmen/ legen.
+  2. Dateinamen unten in die Liste eintragen — Unterstriche werden automatisch
+     zu Leerzeichen. "Luftaufnahme_Nord.jpg" wird z. B. zu "Luftaufnahme Nord".
+-->
+<script>
+  window.LUFTAUFNAHMEN = [
+    "Luftaufnahme_Hanglage_Meerblick.png",
+    "Luftaufnahme_Rohbau_Dschungel.png",
+    "Luftaufnahme_Kirchturm_Altstadt.png",
+    "Luftaufnahme_Reetdachsiedlung_Kueste.png",
+    "Luftaufnahme_Reetdach_Detail.png",
+    "Luftaufnahme_Ferienhaussiedlung_Panorama.png",
+    "Luftaufnahme_Hamburg_Skyline.png",
+    "Luftaufnahme_Mittelmeervilla_Schraeg.png",
+    "Luftaufnahme_Villa_mit_Pool_1.png",
+    "Luftaufnahme_Villa_mit_Pool_2.png",
+  ];
+</script>
 <script src="/js/main.js" defer></script>
 </body>
 </html>
