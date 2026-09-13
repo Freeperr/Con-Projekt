@@ -782,12 +782,13 @@ section { position: relative; }
   flex-wrap: wrap;
 }
 
-.objekt-quote { padding: clamp(6rem, 12.8vh, 9rem) 0; text-align: center; }
+.objekt-quote { padding: clamp(6rem, 12.8vh, 9rem) var(--gutter); text-align: center; }
 .objekt-quote blockquote {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: clamp(1.5rem, 2.88vw, 2.5rem);
-  max-width: 22ch;
+  max-width: 52ch;
+  text-wrap: balance;
   margin: 0 auto;
   line-height: 1.2;
 }
