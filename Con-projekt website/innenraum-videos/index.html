@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Videos — con-projekt</title>
+<meta name="description" content="Videos von Objekten.">
+<link rel="icon" type="image/png" href="/images/favicon-32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16.png" sizes="16x16">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="wordmark">con<span class="dash">-</span>projekt</a>
+  <button class="menu-toggle" aria-expanded="false" aria-controls="navOverlay">
+    <span>Menü</span><span class="menu-toggle-arrow"></span>
+  </button>
+</header>
+
+<nav class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <div class="nav-overlay-inner">
+    <ol class="nav-list">
+      <li><span class="nav-num">01</span><a href="/">Start</a></li>
+      <li><span class="nav-num">02</span><a href="/objekte/">Beispiele</a></li>
+      <li><span class="nav-num">03</span><a href="/luftaufnahmen/">Luftaufnahmen</a></li>
+      <li><span class="nav-num">04</span><a href="/innenraum-videos/">Videos</a></li>
+      <li><span class="nav-num">05</span><a href="/ueber/">Was ich mache</a></li>
+      <li><span class="nav-num">06</span><a href="/kontakt/">Kontakt</a></li>
+    </ol>
+    <div class="nav-overlay-footer">
+      <a href="mailto:kontakt@con-projekt.de">kontakt@con-projekt.de</a>
+      <a href="tel:+491724313331">0172 4313331</a>
+      <span>Hamburg</span>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <section class="legal-hero wrap">
+    <h1 data-reveal>Videos</h1>
+  </section>
+
+  <section class="gallery-section wrap" data-reveal>
+    <div class="gallery-grid" id="videoGallery"></div>
+  </section>
+
+</main>
+
+<!--
+  Neues Video hinzufügen:
+  Die YouTube-Video-ID unten in die Liste eintragen (der Teil nach youtu.be/).
+-->
+<script>
+  window.INNENRAUM_VIDEOS = [
+    "4iNpN4awN9A",
+    "G4jqPB3W648",
+    "8t9sYLvcBR8",
+    "Uj5aZTnd1F8",
+  ];
+</script>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <a href="/" class="footer-wordmark">con<span class="dash">-</span>projekt</a>
+    </div>
+    <div class="footer-meta">
+      <div>
+        <span class="label-mono">Kontakt</span>
+        <a href="mailto:kontakt@con-projekt.de">kontakt@con-projekt.de</a>
+        <a href="tel:+491724313331">0172 4313331</a>
+      </div>
+      <div>
+        <span class="label-mono">Rechtliches</span>
+        <a href="/impressum/">Impressum</a>
+        <a href="/datenschutz/">Datenschutz</a>
+        <a href="/agb/">AGB</a>
+      </div>
+      <div>
+        <span class="label-mono">Standort</span>
+        <span class="value">Hamburg</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="label-mono">© <span id="year"></span> con-projekt</span>
+      <button class="to-top">Nach oben <span class="icon-lead" aria-hidden="true"></span></button>
+    </div>
+  </div>
+
+  <a class="footer-credit" href="https://fynnpetersen.de" target="_blank" rel="noopener">
+    <img src="/images/fp-logo.png" alt="Fynn Petersen" class="footer-credit-logo">
+  </a>
+</footer>
+
+<script src="/js/main.js" defer></script>
+</body>
+</html>
