@@ -540,6 +540,16 @@ section { position: relative; }
 .to-top:hover { color: var(--paper); }
 .to-top .icon-lead { transform: rotate(-90deg); transition: transform 0.3s var(--ease); }
 .to-top:hover .icon-lead { transform: rotate(-90deg) translateX(5px); }
+.footer-credit {
+  display: block;
+  width: fit-content;
+  margin: 2rem 1rem 0 auto;
+  text-decoration: none;
+  opacity: 0.75;
+  transition: opacity 0.3s;
+}
+.footer-credit:hover { opacity: 1; }
+.footer-credit-logo { height: 38px; width: auto; display: block; }
 
 @media (max-width: 700px) {
   .footer-meta { grid-template-columns: 1fr; gap: 1.6rem; }
