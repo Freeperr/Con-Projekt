@@ -3,7 +3,7 @@
    Warmes Anthrazit/Beige, ein Rost-Akzent, Editorial-Typografie.
    ========================================================================== */
 
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,340;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap");
+@import url("/css/fonts.css");
 
 :root {
   --ink: #121212;
@@ -314,12 +314,7 @@ section { position: relative; }
   background-image: radial-gradient(circle, rgba(244,242,237,0.9) 1px, transparent 1.3px);
   background-size: 6px 6px;
 }
-.ph-warm { background-image: url("https://picsum.photos/seed/con-projekt-a/1200/900"); }
-.ph-stone { background-image: url("https://picsum.photos/seed/con-projekt-b/1200/900"); }
-.ph-charcoal { background-image: url("https://picsum.photos/seed/con-projekt-c/1200/900"); }
-.ph-clay { background-image: url("https://picsum.photos/seed/con-projekt-d/1200/900"); }
-.ph-fog { background-image: url("https://picsum.photos/seed/con-projekt-e/1200/900"); }
-.ph-moss { background-image: url("https://picsum.photos/seed/con-projekt-f/1200/900"); }
+.ph-warm, .ph-stone, .ph-charcoal, .ph-clay, .ph-fog, .ph-moss { background-color: var(--charcoal); }
 
 /* Objekt Nr. 01 — Gadebusch: echte Aufnahmen */
 .ph-gadebusch-vorher { background-image: url("../images/gadebusch-vorher.jpg"); }

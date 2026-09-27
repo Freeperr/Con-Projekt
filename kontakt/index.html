@@ -4,11 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kontakt — con-projekt</title>
-<meta name="description" content="Sie haben ein sanierungsbedürftiges Haus? Schreiben Sie Kai Petersen direkt.">
+<meta name="description" content="Fragen zu Raumdesign, Visualisierungen oder Renderings? Schreiben Sie Kai Petersen direkt.">
 <link rel="icon" type="image/png" href="/images/favicon-32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="/images/favicon-16.png" sizes="16x16">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -52,19 +51,20 @@
   </section>
 
   <section class="kontakt-form wrap">
-    <form class="narrow" data-reveal>
+    <form class="narrow" action="/api/contact" method="post" data-reveal>
       <div class="form-row">
         <label class="label-mono" for="name">Name</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" maxlength="200" autocomplete="name" required>
       </div>
       <div class="form-row">
         <label class="label-mono" for="email">E-Mail</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" maxlength="254" autocomplete="email" required>
       </div>
       <div class="form-row">
         <label class="label-mono" for="objekt">Zum Objekt</label>
-        <textarea id="objekt" name="objekt" rows="5" placeholder="[Platzhalter: Adresse, Zustand, Anliegen]"></textarea>
+        <textarea id="objekt" name="objekt" rows="5" maxlength="10000" placeholder="Adresse, Zustand, Anliegen"></textarea>
       </div>
+      <p>Informationen zur Verarbeitung Ihrer Angaben durch Vercel und Resend finden Sie in der <a class="text-link" href="/datenschutz/#kontaktformular">Datenschutzerklärung</a>.</p>
       <button type="submit" class="btn">Absenden <span class="btn-arrow icon-lead"></span></button>
       <p class="form-note form-note-success label-mono">Danke. Wir melden uns in Kürze zurück.</p>
       <p class="form-note form-note-error label-mono">Da ist etwas schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt eine E-Mail.</p>

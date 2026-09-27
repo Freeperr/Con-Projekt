@@ -4,8 +4,6 @@
 // Setup (einmalig):
 // 1. Kostenloses Konto auf https://resend.com anlegen.
 // 2. Domain con-projekt.de dort verifizieren (DNS-Einträge setzen) —
-//    oder für einen ersten Test ohne eigene Domain die Testadresse
-//    "onboarding@resend.dev" als FROM_EMAIL verwenden.
 // 3. Im Vercel-Projekt unter Settings → Environment Variables anlegen:
 //    RESEND_API_KEY = der API-Key aus dem Resend-Dashboard
 //    CONTACT_TO     = kontakt@con-projekt.de
@@ -13,23 +11,33 @@
 // 4. Deployen — fertig, kein weiterer Code nötig.
 
 export default async function handler(req, res) {
+  res.setHeader("Cache-Control", "no-store");
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
     return res.status(405).json({ ok: false, error: "Method not allowed" });
   }
 
-  const { name, email, objekt } = req.body || {};
-
-  if (!name || !email) {
-    return res.status(400).json({ ok: false, error: "Name und E-Mail sind erforderlich." });
+  const body = req.body;
+  if (!body || typeof body !== "object" || Array.isArray(body) ||
+      typeof body.name !== "string" || typeof body.email !== "string" ||
+      (body.objekt !== undefined && typeof body.objekt !== "string")) {
+    return res.status(400).json({ ok: false, error: "Ungültige Formulardaten." });
+  }
+  const name = body.name.trim();
+  const email = body.email.trim();
+  const objekt = (body.objekt || "").trim();
+  if (!name || name.length > 200 || /[\r\n]/.test(name) ||
+      email.length > 254 || !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email) ||
+      objekt.length > 10000) {
+    return res.status(400).json({ ok: false, error: "Bitte prüfen Sie Name, E-Mail und Nachrichtenlänge." });
   }
 
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_TO || "kontakt@con-projekt.de";
-  const from = process.env.CONTACT_FROM || "onboarding@resend.dev";
+  const from = process.env.CONTACT_FROM;
 
-  if (!apiKey) {
-    console.error("RESEND_API_KEY fehlt in den Umgebungsvariablen.");
+  if (!apiKey || !from) {
+    console.error("Kontaktformular: RESEND_API_KEY oder CONTACT_FROM fehlt.");
     return res.status(500).json({ ok: false, error: "Serverkonfiguration unvollständig." });
   }
 
@@ -102,6 +110,7 @@ export default async function handler(req, res) {
   try {
     const resendRes = await fetch("https://api.resend.com/emails", {
       method: "POST",
+      signal: AbortSignal.timeout(10000),
       headers: {
         Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
@@ -117,14 +126,13 @@ export default async function handler(req, res) {
     });
 
     if (!resendRes.ok) {
-      const detail = await resendRes.text();
-      console.error("Resend-Fehler:", detail);
+      console.error("Kontaktformular: Versand fehlgeschlagen, Status", resendRes.status);
       return res.status(502).json({ ok: false, error: "Versand fehlgeschlagen." });
     }
 
     return res.status(200).json({ ok: true });
-  } catch (err) {
-    console.error(err);
+  } catch {
+    console.error("Kontaktformular: Versanddienst nicht erreichbar.");
     return res.status(500).json({ ok: false, error: "Unerwarteter Fehler." });
   }
 }

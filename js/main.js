@@ -40,11 +40,13 @@
 
     function close() {
       overlay.classList.remove("is-open");
+      overlay.setAttribute("aria-hidden", "true");
       toggle.setAttribute("aria-expanded", "false");
       document.body.style.overflow = "";
     }
     function open() {
       overlay.classList.add("is-open");
+      overlay.setAttribute("aria-hidden", "false");
       toggle.setAttribute("aria-expanded", "true");
       document.body.style.overflow = "hidden";
     }
@@ -208,7 +210,7 @@
     setPosition(50);
   }
 
-  /* ---- Kontaktformular (statisch, kein Backend angebunden) ---- */
+  /* ---- Kontaktformular: Vercel Function mit serverseitigem E-Mail-Versand ---- */
   function initKontaktForm() {
     var form = document.querySelector(".kontakt-form form");
     if (!form) return;
@@ -223,9 +225,9 @@
       if (submitBtn) submitBtn.disabled = true;
 
       var data = {
-        name: form.name.value,
-        email: form.email.value,
-        objekt: form.objekt.value,
+        name: form.elements.namedItem("name").value,
+        email: form.elements.namedItem("email").value,
+        objekt: form.elements.namedItem("objekt").value,
       };
 
       fetch("/api/contact", {
@@ -308,11 +310,11 @@
       a.className = "video-embed";
       a.href = "https://youtu.be/" + id;
       a.target = "_blank";
-      a.rel = "noopener";
+      a.rel = "noopener noreferrer";
       a.setAttribute("aria-label", "Video ansehen auf YouTube");
 
       var img = document.createElement("img");
-      img.src = "https://img.youtube.com/vi/" + id + "/maxresdefault.jpg";
+      img.src = "/images/videos/" + id + ".jpg";
       img.alt = "Innenraum-Video";
       img.loading = "lazy";
 
