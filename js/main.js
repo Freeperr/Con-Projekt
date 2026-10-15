@@ -45,6 +45,7 @@
       document.body.style.overflow = "";
     }
     function open() {
+      overlay.scrollTop = 0;
       overlay.classList.add("is-open");
       overlay.setAttribute("aria-hidden", "false");
       toggle.setAttribute("aria-expanded", "true");
@@ -180,9 +181,18 @@
     var labelBefore = root.querySelector(".ba-label-before");
     var labelAfter = root.querySelector(".ba-label-after");
     var dragging = false;
+    var position = 50;
+    root.tabIndex = 0;
+    root.setAttribute("role", "slider");
+    root.setAttribute("aria-label", root.getAttribute("data-ba-label") || "Vorher-Nachher-Vergleich");
+    root.setAttribute("aria-valuemin", "0");
+    root.setAttribute("aria-valuemax", "100");
 
     function setPosition(percent) {
       percent = Math.max(0, Math.min(100, percent));
+      position = percent;
+      root.setAttribute("aria-valuenow", Math.round(percent));
+      root.setAttribute("aria-valuetext", Math.round(percent) + "% " + (labelBefore ? labelBefore.textContent : "Vorher"));
       before.style.clipPath = "inset(0 " + (100 - percent) + "% 0 0)";
       handle.style.left = percent + "%";
       if (labelBefore) labelBefore.style.opacity = percent < 10 ? "0" : "1";
@@ -196,6 +206,8 @@
     }
 
     root.addEventListener("pointerdown", function (e) {
+      if (e.button !== 0) return;
+      root.focus({ preventScroll: true });
       dragging = true;
       root.setPointerCapture(e.pointerId);
       setPosition(percentFromEvent(e));
@@ -207,6 +219,16 @@
     root.addEventListener("pointerup", function () { dragging = false; });
     root.addEventListener("pointercancel", function () { dragging = false; });
 
+    root.addEventListener("keydown", function (e) {
+      var next = position;
+      if (e.key === "ArrowLeft" || e.key === "ArrowDown") next -= 5;
+      else if (e.key === "ArrowRight" || e.key === "ArrowUp") next += 5;
+      else if (e.key === "Home") next = 0;
+      else if (e.key === "End") next = 100;
+      else return;
+      e.preventDefault();
+      setPosition(next);
+    });
     setPosition(50);
   }
 
